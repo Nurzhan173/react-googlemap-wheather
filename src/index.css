@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+div {
+  /* border: 1px solid red;*/
+}
+
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: #ccc;
+}
+.tg td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #ccc;
+  color: #333;
+  background-color: #fff;
+}
+.tg th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #ccc;
+  color: #333;
+  background-color: #f0f0f0;
+}
+.tg .tg-dc35 {
+  background-color: #f9f9f9;
+  border-color: inherit;
+  vertical-align: top;
+}
+.tg .tg-us36 {
+  border-color: inherit;
+  vertical-align: top;
+}
+.tg .tg-yw4l {
+  vertical-align: top;
+}
+.tg .tg-p8bj {
+  font-weight: bold;
+  border-color: inherit;
+  vertical-align: top;
+}
+.tg .tg-9hbo {
+  font-weight: bold;
+  vertical-align: top;
+}
+.tg .tg-b7b8 {
+  background-color: #f9f9f9;
+  vertical-align: top;
+}
+button {
+  padding: 5px 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.selected-button {
+  background-color: #555555;
+  color: white;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}

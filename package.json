@@ -1,0 +1,50 @@
+{
+  "name": "weather",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "assert": "^1.4.1",
+    "bootstrap": "^4.6.0",
+    "dateformat": "^3.0.3",
+    "lodash": "^4.17.10",
+    "moment": "^2.29.1",
+    "prop-types": "15.x",
+    "react": "^16.4.1",
+    "react-animated-weather": "^1.0.3",
+    "react-bootstrap": "^1.6.0",
+    "react-dom": "^16.4.1",
+    "react-dropdown-select": "^4.7.4",
+    "react-google-maps": "^9.4.5",
+    "react-places-autocomplete-extended": "^6.0.8",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.4",
+    "react-select": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-freeze": "^0.1.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "PORT=3000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest --coverage --verbose",
+    "test2": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "es6-promise": "^4.2.4",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupJest.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/setupJest.js"
+    ]
+  },
+  "homepage": "/weather/"
+}
