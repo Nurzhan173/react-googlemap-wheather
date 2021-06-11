@@ -7,6 +7,7 @@ import Forecast from "./forecast/Forecast";
 import History from "./history/History";
 import store from "../../../redux/store/store";
 import * as actionRepo from "../../../redux/action/actions";
+import Axios from "axios";
 
 export const RightPane = () => {
 
@@ -62,6 +63,31 @@ const NavButtons = () => {
   const [ch20, setCh20] = useState(0);
   const [c6h5oh, setc6h5oh] = useState(0);
 
+  const [fields, setFields] = useState([]);
+
+  const addFields = () => {
+    Axios.post("http://localhost:3001/create", {
+      DateTime: Date.now(),
+      OxUglerod: co,
+      DioxSery: so2,
+      DioxAzot: no2,
+      Formaldegid: ch20,
+      Fenol: c6h5oh
+    }).then(() => {
+      setFields([
+        ...fields,
+        {
+          DateTime: Date.now(),
+          OxUglerod: co,
+          DioxSery: so2,
+          DioxAzot: no2,
+          Formaldegid: ch20,
+          Fenol: c6h5oh
+        },
+      ]);
+    });
+  };
+
   return (
     <div>
       {/* <p>Initial wind speed: 2km/h</p> */}
@@ -113,6 +139,8 @@ const NavButtons = () => {
             />
 
           </InputGroup>
+
+          <button onClick={() => addFields()}>Save db</button>
         </div>
       </div>
 

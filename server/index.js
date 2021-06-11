@@ -19,10 +19,11 @@ app.post("/create", (req, res) => {
   const DioxSery = req.body.DioxSery;
   const DioxAzot = req.body.DioxAzot;
   const Formaldegid = req.body.Formaldegid;
+  const Fenol = req.body.Fenol;
 
   db.query(
-    "INSERT INTO employees (DateTime, OxUglerod, DioxSery, DioxAzot, Formaldegid) VALUES (?,?,?,?,?)",
-    [DateTime, OxUglerod, DioxSery, DioxAzot, Formaldegid],
+    "INSERT INTO airPollution (DateTime, OxUglerod, DioxSery, DioxAzot, Formaldegid, Fenol) VALUES (?,?,?,?,?,?)",
+    [DateTime, OxUglerod, DioxSery, DioxAzot, Formaldegid, Fenol],
     (err, result) => {
       if (err) {
         console.log(err);
