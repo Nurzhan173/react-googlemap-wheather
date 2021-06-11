@@ -88,6 +88,13 @@ const NavButtons = () => {
     });
   };
 
+
+  const getFields = () => {
+    Axios.get("http://localhost:3001/airPollution").then((response) => {
+      setFields(response.data);
+    });
+  };
+
   return (
     <div>
       {/* <p>Initial wind speed: 2km/h</p> */}
@@ -139,7 +146,7 @@ const NavButtons = () => {
             />
 
           </InputGroup>
-
+          <button onClick={() => getFields()}>Show</button>
           <button onClick={() => addFields()}>Save db</button>
         </div>
       </div>
