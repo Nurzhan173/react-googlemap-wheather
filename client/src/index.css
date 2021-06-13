@@ -12,6 +12,8 @@ div {
   border-collapse: collapse;
   border-spacing: 0;
   border-color: #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .tg td {
   font-family: Arial, sans-serif;

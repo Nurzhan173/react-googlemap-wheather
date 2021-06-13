@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Route, NavLink } from "react-router-dom";
 import { DropdownButton, Dropdown, InputGroup, FormControl } from "react-bootstrap";
@@ -8,8 +8,18 @@ import History from "./history/History";
 import store from "../../../redux/store/store";
 import * as actionRepo from "../../../redux/action/actions";
 import Axios from "axios";
+import moment from "moment";
+import { getWheaterDeg } from "../../../api-client/api-wheather";
 
 export const RightPane = () => {
+
+  const [wheather, setWheater] = useState();
+
+  useEffect(() => {
+    getWheaterDeg().then((response) => {
+      setWheater(response);
+    })
+  }, [])
 
   return (
     <div
@@ -20,7 +30,8 @@ export const RightPane = () => {
       }}
     >
       <div style={{ marginTop: "300px" }}>
-        <WeatherToday />
+        {wheather &&
+          <WeatherToday wheather={wheather} />}
       </div>
       <div
         id="nav-buttons"
@@ -95,6 +106,8 @@ const NavButtons = () => {
     });
   };
 
+
+
   return (
     <div>
       {/* <p>Initial wind speed: 2km/h</p> */}
@@ -144,10 +157,49 @@ const NavButtons = () => {
               aria-describedby="basic-addon1"
               onChange={(e) => setc6h5oh(e.target.value)}
             />
-
           </InputGroup>
-          <button onClick={() => getFields()}>Show</button>
+
           <button onClick={() => addFields()}>Save db</button>
+          <button onClick={() => getFields()}>Show</button>
+
+          {fields && fields.length > 0 && (
+            <div
+              style={{
+                clear: "left",
+                display: "flex",
+                justifyContent: "center",
+                textAlign: "left"
+              }}
+            >
+              <table className="tg">
+                <thead>
+                  <tr>
+                    <th className="tg-p8bj">Date</th>
+                    <th className="tg-p8bj">DioxAzot</th>
+                    <th className="tg-p8bj">DioxSery</th>
+                    <th className="tg-p8bj">Fenol</th>
+                    <th className="tg-p8bj">Formaldegid</th>
+                    <th className="tg-p8bj">OxUglerod</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fields.map((field) => {
+                    return (
+                      <tr key={field.id}>
+                        <td>{moment.unix(field.DateTime).format("DD/MM/YYYY")}</td>
+                        {/* <td>{new Date(field.DateTime)}</td> */}
+                        <td>{field.DioxAzot}</td>
+                        <td>{field.DioxSery}</td>
+                        <td>{field.Fenol}</td>
+                        <td>{field.Formaldegid}</td>
+                        <td>{field.OxUglerod}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
 

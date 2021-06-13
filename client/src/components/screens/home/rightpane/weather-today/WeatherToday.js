@@ -21,7 +21,7 @@ class WeatherToday extends React.Component {
     let sunRiseTime = "",
       sunSetTime = "";
 
-    if (this.props.currentWeather.isFetched) {
+    if (this.props.currentWeather.isFetched && this.props.wheather) {
       const indexDate = 0;
       const offset = this.props.currentWeather.offset;
       myIcon = this.props.currentWeather.currently.icon;
@@ -33,10 +33,10 @@ class WeatherToday extends React.Component {
       myTempLow = this.props.currentWeather.daily.data[indexDate]
         .temperatureLow;
 
-      currentDate = epochToDate(
-        this.props.currentWeather.currently.time,
-        offset
-      );
+      // currentDate = epochToDate(
+      //   this.props.currentWeather.currently.time,
+      //   offset
+      // );
       // currentDate = dateFormat(currentDate, "fullDate");
       // currentDate = dateFormat(currentDate, "dddd, mmmm dS, yyyy, h:MM:ss");
       currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -105,6 +105,11 @@ class WeatherToday extends React.Component {
                     {myCurrentTemp}{" "}
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    Wind direction, degrees: {this.props.wheather.wind.deg}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -139,7 +144,8 @@ class WeatherToday extends React.Component {
 
 // ----------- Prop-Types ------
 WeatherToday.propTypes = {
-  navigation: PropTypes.object
+  navigation: PropTypes.object,
+  wheather: PropTypes.object
 };
 
 // ---------- Setup Redux -------------

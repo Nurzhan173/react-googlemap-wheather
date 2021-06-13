@@ -20,9 +20,8 @@ API.getWeatherByDate = async (coordinate, date, myConfig) => {
 
     const epochTime = dateToEpoch(dateTime);
 
-    const URL = `${myConfig.darkSkyUrl}/${config.apiKey}/${coordinate.lat},${
-      coordinate.long
-    },${epochTime}?${myConfig.exclude}`;
+    const URL = `${myConfig.darkSkyUrl}/${config.apiKey}/${coordinate.lat},${coordinate.long
+      },${epochTime}?${myConfig.exclude}`;
 
     const options = {};
     const response = await fetch(myConfig.proxyUrl + "/" + URL, options);
