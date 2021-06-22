@@ -78,7 +78,7 @@ const NavButtons = () => {
 
   const addFields = () => {
     Axios.post("http://localhost:3001/create", {
-      DateTime: Date.now(),
+      DateTime: moment().format("DD/MM/YYYY"),
       OxUglerod: co,
       DioxSery: so2,
       DioxAzot: no2,
@@ -88,7 +88,7 @@ const NavButtons = () => {
       setFields([
         ...fields,
         {
-          DateTime: Date.now(),
+          DateTime: moment().format("DD/MM/YYYY"),
           OxUglerod: co,
           DioxSery: so2,
           DioxAzot: no2,
@@ -99,14 +99,18 @@ const NavButtons = () => {
     });
   };
 
-
   const getFields = () => {
     Axios.get("http://localhost:3001/airPollution").then((response) => {
       setFields(response.data);
     });
   };
 
-
+  function convertTime(val) {
+    let t = new Date();
+    t.setSeconds(val);
+    let res = t.format("dd.mm.yyyy hh:MM:ss");
+    return res;
+  }
 
   return (
     <div>
@@ -159,7 +163,7 @@ const NavButtons = () => {
             />
           </InputGroup>
 
-          <button onClick={() => addFields()}>Save db</button>
+          <button onClick={() => addFields()}>Save</button>
           <button onClick={() => getFields()}>Show</button>
 
           {fields && fields.length > 0 && (
@@ -186,7 +190,7 @@ const NavButtons = () => {
                   {fields.map((field) => {
                     return (
                       <tr key={field.id}>
-                        <td>{moment.unix(field.DateTime).format("DD/MM/YYYY")}</td>
+                        <td>{field.DateTime}</td>
                         {/* <td>{new Date(field.DateTime)}</td> */}
                         <td>{field.DioxAzot}</td>
                         <td>{field.DioxSery}</td>

@@ -107,7 +107,7 @@ class WeatherToday extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    Wind direction, degrees: {this.props.wheather.wind.deg}
+                    Wind direction(degrees): {this.props.wheather.wind.deg}
                   </td>
                 </tr>
               </tbody>
